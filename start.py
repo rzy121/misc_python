@@ -7,7 +7,11 @@ pd.options.display.max_columns = 30
 # Visualization
 import matplotlib.pyplot as plt
 import seaborn as sns
-plt.style.use('bmh')
+try:
+    from jupyterthemes import jtplot
+    jtplot.style(theme = 'oceans16')
+except ImportError:
+    plt.style.use('bmh')
 
 # If in ipython, load autoreload extension & run plots inline
 if 'ipython' in globals():
