@@ -89,7 +89,7 @@
         'sub-menu' : [
             {
                 'name' : 'Connect to SnowFlake',
-                'snippet' : [`from sqlalchemy import create_engine\nengine_sf = create_engine('snowflake://{credentials}@{acc}/{db}/{schema}?warehouse={wh}'.format(\n\tcredentials = env['credentials_sf'],\n\tacc = 'mobilityware', \n\tdb = 'mwdb',\n\tschema = 'public',\n\twh = 'mwdataanalyst'\n))`
+                'snippet' : [`from sqlalchemy import create_engine\nengine_sf = create_engine('snowflake://{credentials}@{acc}/{db}/{schema}?warehouse={wh}'.format(\n\tcredentials = env['credentials_sf'],\n\tacc = 'mobilityware', \n\tdb = 'mwdb',\n\tschema = 'public',\n\twh = 'mwdataanalyst_large'\n))`
                 ],
             },
         ],
