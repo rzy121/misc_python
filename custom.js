@@ -92,6 +92,10 @@
                 'snippet' : [`from sqlalchemy import create_engine\nengine_sf = create_engine('snowflake://{credentials}@{acc}/{db}/{schema}?warehouse={wh}'.format(\n\tcredentials = env['credentials_sf'],\n\tacc = 'mobilityware', \n\tdb = 'mwdb',\n\tschema = 'public',\n\twh = 'mwdataanalyst_large'\n))`
                 ],
             },
+            {
+                'name': 'T-Test from Scipy',
+                'snippet' : [`from scipy.stats import ttest_ind\ndef t_test(df, seg_col, metric_cols, seg_control = 'control', seg_test = 'test', sig=0.1, tail = 2):\n\tcontrol = df.loc[df[seg_col]==seg_control, metric_cols]\n\ttest = df.loc[df[seg_col]==seg_test, metric_cols]\n\tmean_diff = test.mean() - control.mean() \n\tt, p = ttest_ind(test, control)\n\tif tail == 1:\n\t\tp = p/2\n\tdf = pd.DataFrame({'metrics': metric_cols, 'control-mean':control.mean().values, 'test-mean':test.mean().values, 'mean-diff':mean_diff.values, 't-value': t, 'p-value': p, 'sigfinicant': p<sig})\n\treturn df`],
+            },
         ],
     };
     snippets_menu.options['menus'] = snippets_menu.default_menus;
