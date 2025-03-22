@@ -1,18 +1,17 @@
 import pandas as pd
 import numpy as np
-from os import environ as env
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-# Pandas options
-pd.options.display.max_columns = 30
+# Pandas optionspd.options.display.max_columns = 30
+pd.set_option('display.max_columns', None)
 
 # Visualization
 import matplotlib.pyplot as plt
 import seaborn as sns
-try:
-    from jupyterthemes import jtplot
-    jtplot.style(theme = 'oceans16')
-except ImportError:
-    plt.style.use('bmh')
+plt.style.use('bmh')
+sns.set(style='darkgrid')
 
 # If in ipython, load autoreload extension & run plots inline
 if 'ipython' in globals():
