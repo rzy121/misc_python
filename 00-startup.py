@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import os
+import time
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -22,6 +23,25 @@ try:
         ipython.run_line_magic('matplotlib', 'inline')
 except Exception as e:
     pass  # You can log this if needed
+
+def timer(func):
+    """decorator to time any function."""
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        print(f"⏱️ {func.__name__} ran in {time.time() - start:.3f} sec")
+        return result
+    return wrapper
+
+class Env:
+    """Convenient access to environment variables."""
+    def get(self, key, default=None):
+        value = os.getenv(key, default)
+        print(f"🔐 {key} = {value}")
+        return value
+
+env = Env()
+
 
 # --- Confirmation Flag ---
 __startup_loaded__ = True
